@@ -1,0 +1,55 @@
+/*
+5.P 502-503 크기가 알려지지 않은 파일 읽기
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/*
+<stdio.h>	표준 입출력 지원	fopen, fgets, fclose, printf
+<stdlib.h>	동적 메모리 할당, 프로그램 제어	realloc, free, exit
+<string.h>	문자열 처리 기능 제공	strlen, strcpy, strcat
+*/
+
+int main()
+{
+    FILE* infile;
+    char line[121];
+    char* info = NULL;
+    int len;
+    int total_size;
+
+    infile = fopen("proverbs.txt", "r");
+    if (infile == NULL) {
+        printf("파일 열기 오류! \n");
+        return 1;
+    }
+
+    while (fgets(line, sizeof(line), infile)) {
+        len = strlen(line);
+        total_size += len;
+
+        char* temp = (char*)realloc(info, total_size + 1);
+        if (temp == NULL) {
+            printf("메모리 할당 오류!\n");
+            free(info);
+            return 1;
+        }
+        info = temp;
+
+        if (total_size == len) {
+            strcpy(info, line);
+        }
+        else {
+            strcat(info, line);
+        }
+    }
+
+    fclose(infile);
+    if (info != NULL) {
+        printf("%s\n", info);
+        free(info);
+    }
+
+    return 0;
+}
