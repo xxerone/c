@@ -1,0 +1,55 @@
+/*
+3.P 370 단어의 개수 세기 문제 구현 및 결과확인
+*/
+
+#include <stdio.h>
+
+int countWords(char* str) {
+    int count = 0;
+    int inWord = 0;
+
+    while (*str) {
+        if (*str == ' ') {
+            inWord = 0; // // 공백이면 단어 끝남
+        }
+        else if (!inWord) {
+            // **!inWord**는 inWord == 0일 때 참이 됩니다.
+            // 'H': 공백이 아니고 inWord = 0 → 새로운 단어 시작 → count = 1, inWord = 1.
+            // 'e', 'l', 'l', 'o': 공백이 아니므로 단어 내부 유지.
+            inWord = 1;
+            count++;
+
+            /*
+            초기 상태:
+
+            inWord = 0, count = 0.
+            첫 번째 단어 "Hello":
+
+            'H': !inWord가 참 → 새로운 단어 시작 → count = 1, inWord = 1.
+            'e', 'l', 'l', 'o': 단어 내부이므로 inWord = 1.
+            공백:
+
+            ' ' (공백): inWord = 0.
+            두 번째 단어 "World":
+
+            'W': !inWord가 참 → 새로운 단어 시작 → count = 2, inWord = 1.
+            'o', 'r', 'l', 'd': 단어 내부이므로 inWord = 1.
+            */
+        }
+        str++;
+        // 현재 문자가 공백이 아닌 경우:
+        // 첫 번째 if 조건이 false가 됩니다 → inWord는 변경되지 않습니다.
+        // 두 번째 else if 조건은 이미 inWord == 1 상태에서는 실행되지 않습니다.
+        // 따라서, 공백이 아닌 문자가 계속 이어지면 inWord가 이미 1로 설정되어 있고 변경되지 않으므로, 단어 내부 상태가 유지됩니다.
+    }
+    return count;
+}
+
+int main()
+{
+    char str[] = "Hello World Welcome to C programming";
+
+    printf("단어 개수: %d\n", countWords(str));
+
+    return 0;
+}
