@@ -1,0 +1,52 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+#define MAX 10000 //define : 상수 -> 소스코드 어디서든 MAX는 define된 1만으로 치환
+	int main(void) {
+		char line[MAX];
+
+
+		// 파일 쓰기 fputs
+		// 파일 입출력 -> 파일에 어떤 데이터를 저장. 파일에 저장된 데이터를 불러오기
+		// fputs, fgets-> 각각의 쌍이다. 문자열 저장
+		// fprintf, fscanf-> 각각의 쌍이다.
+		
+		/*
+		// 파일에 쓰기
+		FILE* file = fopen("test1.txt", "wb"); //바이너리 데이터 쓰는 목적으로 파일을 연다 (읽는다). 여는 형식 : wb, 소스코드에서는 \\로 해야 하나로 인식한다. (탈출문자 떄문에)
+		// 파일 여는 방식 : r (읽기 전용) w (쓰기 전용) a (이어 쓰기), t(텍스트 데이터) b(바이너리 데이터)
+		if (file == NULL) {
+			printf("파일 열기 실패\n");
+			return 1; // 프로그램 종료
+		}
+		printf("asd"); // 오류해결 방법 : nadocoding 우클릭 후 파일 탐색기에서 폴더 열기하면 나온다.
+		//NULL이 아님
+		fputs("fputs를 이용해서 글을 적어볼게요\n", file); // 파일에 저장할 내용 쓰기, 앞에는 작성할 내용 적고 뒤에는 명시한 파일 포인터 쓰기
+		fputs("잘 적히는지 확인해주세요\n", file);
+		// 파일을 열고 나서 닫지 않은 상태에서 어떤 프로그램에 문제가 생기면 데이터 손실이 발생 가능!! -> 항상 파일은 닫아주는 습관을 들여주세요.
+		*/
+
+
+		/*
+		// 파일 읽기 fgets
+		FILE* file = fopen("fileio.txt", "rb"); //wb로 열면 파일 작성하겠다는거라 이미 있는 파일도 내용 지운다. 이미 있는 파일로 계속 쓰려면 a로 써야함.
+		// 파일 여는 방식 : r (읽기 전용) w (쓰기 전용) a (이어 쓰기), t(텍스트 데이터) b(바이너리 데이터)
+		if (file == NULL) {
+			printf("파일 열기 실패\n");
+			return 1; // 프로그램 종료
+		}
+
+		while (fgets(line, MAX, file) != NULL) {
+			printf("%s", line); //line 출력. 파일 끝까지 불러옴. 파일에 저장했던 문자 그대로 가져오지 못함.
+		}
+		//파일 불러오면 어디 저장될지 몰라서 line에 저장. (맨 처음에 저장될곳, 사이즈, 파일 포인터) 순서로
+		//1줄 단위로 불러옴.
+		fclose(file); //파일 저장하고 닫음
+		*/
+
+		
+		//fprintf, fscanf 쌍
+		// printf와 scanf 처럼 %d%d%s와 &num(어디 넣는지)처럼 정형화된 포맷이 있고 맞춰 입력하고 싶을 때 쓴다.
+		
+		return 0;
+	}
