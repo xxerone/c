@@ -1,0 +1,68 @@
+/*
+7.P 391 문자열 토큰 분리 예제 구현 및 결과확인
+
+사용자로부터 받은 분리자를 사용하여
+사용자로부터 받은 문자열을 토큰으로 분리하는 프로그램을 작성해줘.
+*/
+
+#include <stdio.h>
+#include <string.h>
+
+char s[] = "Man is immortal, because he has a soul";
+
+char seps[] = " ,\t\n";
+char* token;
+
+
+int main()
+{
+    token = strtok(s, seps);
+
+    while (token != NULL) {
+        // 다음 토큰을 얻으려면 NULL을 인수로 줘야한다는데 뭔의미일까
+        // t1 = strtok(s, " ");
+        // t2 = strtok(NULL, " ");
+        // 첫 번째 인수에 NULL을 제공하면 "이전 문자열 상태를 그대로 이어서 처리하라"는 의미가 됩니다.
+
+
+        // 
+        // strtok은 구분자로 나눌 더 이상 토큰이 없으면 NULL을 반환합니다.
+        printf("토큰 : %s\n", token);
+        token = strtok(NULL, seps);
+    }
+
+    return 0;
+}
+
+/*
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char s[100];            // 입력받을 문자열
+    char seps[10];          // 사용자 정의 분리자
+    char *token;            // 토큰을 저장할 포인터
+
+    // 문자열 입력
+    printf("문자열을 입력하세요: ");
+    fgets(s, sizeof(s), stdin); // 공백 포함 입력받기
+    s[strcspn(s, "\n")] = '\0'; // fgets로 입력받은 문자열의 '\n' 제거
+
+    // 분리자 입력
+    printf("분리자를 입력하세요: ");
+    fgets(seps, sizeof(seps), stdin);
+    seps[strcspn(seps, "\n")] = '\0'; // fgets로 입력받은 분리자의 '\n' 제거
+
+    // 첫 번째 토큰 추출
+    token = strtok(s, seps);
+
+    // 모든 토큰 출력
+    while (token != NULL) {
+        printf("토큰: %s\n", token);
+        token = strtok(NULL, seps); // 다음 토큰 추출
+    }
+
+    return 0;
+}
+*/
