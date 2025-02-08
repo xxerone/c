@@ -1,0 +1,33 @@
+/*
+9.P 434-435 좌표 일치 판단 - 구현 및 결과 확인
+*/
+
+#include <stdio.h>
+
+typedef struct {
+    int x;
+    int y;
+} POINT;
+
+int main()
+{
+    POINT p1 = { 3,4 };
+    POINT p2 = { 3,4 };
+    if (equal(&p1, &p2)) {
+        printf("두 점은 같습니다.\n");
+    }
+    else {
+        printf("두 점은 다릅니다.\n");
+    }
+
+    return 0;
+}
+
+int equal(POINT* P1, POINT* P2) {
+    if (P1->x == P2->x && P1->y == P2->y) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
