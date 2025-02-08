@@ -1,0 +1,142 @@
+/*
+7.P 462 - 463 간단한 표절 적발 프로그램 구현 및 결과 확인
+
+이 프로그램을 좀 더 정교하게 만들 수 있는가?
+예를 들어서 줄 단위가 아니고 단어 단위로 분석할 수도 있겠다.
+사용된 단어들이 80% 이상 같으면 표절이라고 판단하는 식이다.
+*/
+#include <stdio.h>
+
+#define MAX_SIZE 10000
+
+int main(void) {
+    FILE* file1, * file2;
+    char filename1[100];
+    char filename2[100];
+
+    char buffer1[MAX_SIZE];
+    char buffer2[MAX_SIZE];
+    char* p1, * p2;
+    int copy = 1;
+
+    printf("리포트 #1 파일 이름: ");
+    scanf("%s", filename1);
+
+    printf("리포트 #2 파일 이름: ");
+    scanf("%s", filename2);
+
+    file1 = fopen(filename1, "r");
+    file2 = fopen(filename1, "r");
+
+    if (file1 == NULL || file2 == NULL) {
+        printf("파일 열기 오류\n");
+        return 1;
+    }
+
+    while (1) {
+        p1 = fgets(buffer1, MAX_SIZE, file1);
+        p2 = fgets(buffer2, MAX_SIZE, file2);
+        if (file1 == NULL || file2 == NULL) {
+            copy = 0;
+            break;
+        }
+        if (strcmp(buffer1, buffer2) != 0) {
+            copy = 0;
+            break;
+        }
+    }
+
+    if (copy == 1) {
+        printf("2개의 리포트는 동일합니다. \n");
+    }
+    else {
+        printf("2개의 리포트는 동일하지 않습니다. \n");
+    }
+
+    fclose(file1);
+    fclose(file2); // 왜 안닫으면 파일이 손상될까, 끝에 리턴 만나면 그냥 꺼지게 만들 순 없을까?
+    return 0;
+}
+
+/*
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#define MAX_SIZE 10000
+#define MAX_WORDS 1000
+
+// 파일에서 단어를 추출하여 배열에 저장하는 함수
+int extract_words(FILE* file, char words[][50]) {
+    char buffer[MAX_SIZE];
+    int word_count = 0;
+    char* token;
+
+    while (fgets(buffer, MAX_SIZE, file) != NULL) {
+        token = strtok(buffer, " \t\n.,!?"); // 공백, 탭, 개행 및 구두점 기준으로 단어 분리
+        while (token != NULL) {
+            strcpy(words[word_count++], token);
+            token = strtok(NULL, " \t\n.,!?");
+        }
+    }
+    return word_count;
+}
+
+// 두 파일의 단어 유사도를 계산하는 함수
+float calculate_similarity(char words1[][50], int count1, char words2[][50], int count2) {
+    int match_count = 0;
+
+    for (int i = 0; i < count1; i++) {
+        for (int j = 0; j < count2; j++) {
+            if (strcmp(words1[i], words2[j]) == 0) {
+                match_count++;
+                break;
+            }
+        }
+    }
+    return (float)match_count / (count1 > count2 ? count1 : count2) * 100;
+}
+
+int main(void) {
+    FILE* file1, * file2;
+    char filename1[100], filename2[100];
+    char words1[MAX_WORDS][50], words2[MAX_WORDS][50];
+    int count1, count2;
+    float similarity;
+
+    // 파일 이름 입력
+    printf("리포트 #1 파일 이름: ");
+    scanf("%s", filename1);
+    printf("리포트 #2 파일 이름: ");
+    scanf("%s", filename2);
+
+    // 파일 열기
+    file1 = fopen(filename1, "r");
+    file2 = fopen(filename2, "r");
+    if (file1 == NULL || file2 == NULL) {
+        printf("파일 열기 오류\n");
+        return 1;
+    }
+
+    // 각 파일에서 단어 추출
+    count1 = extract_words(file1, words1);
+    count2 = extract_words(file2, words2);
+
+    // 유사도 계산
+    similarity = calculate_similarity(words1, count1, words2, count2);
+    printf("두 파일의 단어 유사도: %.2f%%\n", similarity);
+
+    // 표절 여부 판단
+    if (similarity >= 80.0) {
+        printf("두 파일은 표절로 간주됩니다.\n");
+    } else {
+        printf("두 파일은 표절로 간주되지 않습니다.\n");
+    }
+
+    // 파일 닫기
+    fclose(file1);
+    fclose(file2);
+
+    return 0;
+}
+*/
