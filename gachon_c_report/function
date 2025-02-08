@@ -1,0 +1,225 @@
+#include <stdio.h>
+#include <time.h>
+
+// 선언
+void function_without_return(); //세미콜론으로 닫으면 됨. void : 값을 반환하지 않음.
+int function_with_return(); // int : int (정수형 값)를 반환
+void function_without_params();
+void function_with_params(int num1, int num2, int num3); // 3개의 정수를 받는 함수 
+int apple(int total, int ate); // 남아있는 개수(3개)라는 값을 보내주는 함수. 전체 total 개에서 ate 개를 먹고 남은 수를 반환
+void p(int num);
+
+int main_f(void) {
+	/*
+	// 계산기 -> 함수
+	int num = 2;
+	printf("num은 %d입니다.\n", num); // 2
+
+	// 2+3은?
+	num = num + 3; // num += 3;
+	p(num); //함수 호출 -> num 값을 던진다.
+	// printf("num은 %d입니다.\n", num); // 5 + printf()도 함수
+
+	// 5-1은?
+	num -= 1; // num = num - 1
+	p(num);
+	// printf("num은 %d입니다.\n", num); // 4
+
+	// 4 * 3은?
+	num *= 3;
+	p(num);
+	// printf("num은 %d입니다.\n", num); // 12
+
+	num /= 6;
+	p(num);
+	// printf("num은 %d입니다.\n", num); // 2
+	*/
+
+
+	/*
+	// 함수의 형태 - 다시 보기!!
+	// 반환형 (함수에서 동작을 수행 후 반환해주는 값 - 전달값 : 36, 함수 : ㅁ+4, 반환형(출력값) : ? -> 보내주는 자료형에 맞추기) 함수이름 (전달값 - 어떤 값 전달) {}
+
+	예시
+
+	// 선언, main 밖 위쪽에서 선언
+	int 함수이름 (int num);
+
+	// 작동, main 안쪽
+	함수이름(num(?));
+
+	// 정의, main 밖 아래쪽에서 선언
+	int 함수이름 ((int, char - 있을수도 있다. 이름은 달라야하나 여러개 가능) num) {
+	// 정의를 할 때 작성한 부분은 메인 함수 위쪽에 선언한 부분과 동일해야함.
+	return num + 4;
+	// void는 아무것도 없다는 의미
+	}
+	*/
+
+
+	/*
+	// 반환값이 없는 함수
+	// 함수 종류 : 반환값이 없는 함수 (void)
+	function_without_return(); // 할려면 main 위에서 선언 해야함. 함수 호출. F3누르면 자동으로 이동한다. 반환값이 없어 동작 안함
+	*/
+
+	
+	/*
+	// 반환값이 있는 함수
+	int ret = function_with_return(); // 반환값이 있으므로 (정수형) 값을 받음
+	p(ret);
+	*/
+
+
+	/*
+	// 전달값 (파라미터)이 없는 함수
+	function_without_params();
+	*/
+
+
+	/*
+	// 전달값이 있는 함수
+	function_with_params(1,2,3); // 여기서 숫자주면 선언으로 가는건가? 이해가 안되노
+	*/
+
+
+	/*
+	// 파라미터 (전달값)도 받고, 반환값이 있는 함수
+	int ret = apple(5,2); // 5개의 사과 중에서 2개를 먹었다. 함수 호출 시 ret 값에는 남은 사과 개수가 나옴.
+	printf("사과 5개 중에 2개를 먹으면? %d 개가 남아요.\n", ret);
+	printf("사과 %d 개 중에 %d 개를 먹으면 %d 개가 남아요\n", 10, 4, apple(10, 4)); // apple 함수 호출하며 10과 4를 보내고 6을 반환한다. 정수 3개를 인자로 받고 10 4 apple 반환값이 들어간다.
+	*/
+
+
+	// 함수를 이용한 계산기
+
+
+	// 프로젝트
+
+
+	/*
+	// 배열 기초 - 주석 정리!!
+	int subway_1 = 30; // 정수, 지하철 1호차에 30명이 타고 있다.
+	int subway_2 = 40;
+	int subway_3 = 50;
+
+	printf("지하철 1호차에 %d명이 타고있다.\n", subway_1);
+
+	// 지하철은 연속되어 있으므로 정수형 변수 3개에서 100개로 늘어날 때 다 선언할 수 없으므로 배열 필요. 
+	// 지하철 1칸이 정수형 변수면 연속된 공간에 정수형 변수를 여러개 연속해서 만들 수 있는 자료형 
+	// 여러 개의 변수를 함께, 동시에 생성
+	int subway_array[3]; //숫자가 의미하는 것 : 몇개의 int형 정수를 보관하는 배열을 만들 것이냐. 여기서는 정수형 변수 3개 (연속된 공간에 변수 할당)를 선언하는 것과 같은 역할
+	subway_array[0] = 30; // 인덱스 (배열을 사용하기 위해 입력하는 값)가 0부터 시작. 공간은 1,2,3으로 생기는데 (각각이 int형 변수가 되어)
+	subway_array[1] = 40;
+	subway_array[2] = 50;
+
+	for (int i = 0; i < 3; i++) {
+		// i = 0,1,2
+		printf("지하철 %d호차에 %d명이 타고있다.\n", i+1, subway_array[i]);
+
+	}
+	*/
+
+	
+	/*
+	// 주석 정리!!
+    // 값 설정 방법 (값 집어넣는 방법) - 값은 초기화 해야함!!
+	int arr[10] = {1,2,3,4,5,6,7,8,9,10}; // 10칸에 공간이 생기고 컴마로 구분해서 중괄호로 10개의 값을 집어넣음
+	// 선언만 해두고 값을 초기화 안하면 이상한 값이 들어간다. -> dummy (쓰레기, 알수없는) 값이라고 한다.
+	for (int i = 0; i < 10; i++) {
+		printf("%d\n", arr[i]);
+	}
+
+	int size = 10; //배열을 선언할 때 변수를 사용하기 X
+	// int arr[size] //배열 크기는 항상 상수로 선언 (식에 상수값 (숫자)이 있어야한다.) 정수형 변수여도 배열을 생성할 땐 사용 X
+	int arr_i[10] = { 1,2 }; // 3번째 값부터는 자동으로 0으로 초기화 됨. (선언 : 10, 넣은건 2번째까지. 값을 하나라도 선언하면 그 외의 값은 모두 0으로 들어감 vs 값을 하나도 선언 안하면 쓰레기 값이 들어감 / 칸은 10개인데 값을 처음 2개만 놔두고 3번째부터 10번째까지 값은 나머지는 0이 들어감)
+	for (int i = 0; i < 10; i++) {
+		printf("%d\n", arr_i[i]);
+	}
+	int arr_e[] = { 1,2 };// 배열크기 : arr[2] - 중괄호에 있는 값의 개수를 세어 배열 크기를 만듬. 배열 크기를 선언하지 않고 대괄호 후 선언 가능
+	float arr_f[5] = { 1.0f, 2.0f, 3.0f };
+	for (int i = 0; i < 5; i++) { // 배열은 5개인데 for문을 10까지 돌리면 이상한 값이 들어감.
+		printf("%.2f\n", arr_f[i]); //나머지는 0.0으로 나옴. 소수점 둘째자리까지 f : float형 출력
+	}
+	*/
+
+
+/*
+	// 문자 (한글자) VS 문자열 (여러글자)
+char c = 'a'; // 문자
+printf("%c\n", c); //문자 출력
+// char str[6] = "coding"; // 배열 - 6개의 char 공간 [c][o][d][i][n][g][\0] 자료형을 한 칸씩 넣어 합쳐져 배열을 이루고 배열이 문자열을 이룸
+// 뒤에 값이 이상한게 들어가는 이유 : 문자열 끝에는 끝을 의미하는 NULL 문자 '\0'가 포함되여야함.
+char str[7] = "coding"; // 글자 뒤 끝을 의미하는 NULL 문자 들어가는 공간이 생김. 글자가 들어간 후 남은 한칸에 자동으로 문자열의 끝을 나타내는 \0이 자동으로 들어감.
+printf("%s\n", str); //%s로 하면 전체 char 값 모두 나온다. []안에 숫자 필요 없음.
+
+char str2[] = "coding"; //값을 선언안해 coding라는 6개의 글자 크기만큼 배열이 만들어진다.
+printf("%s\n", str2);
+printf("%d\n", sizeof(str2)); //sizeof : 배열형 변수가 가지는 크기를 나타낸다. 7이라고 나오는 이유 : 자동으로 문자열 끝을 나타내는 NU:: 문자 공간 넣어 size가 7이 됨
+for (int i = 0; i < sizeof(str2); i++) //str 사이즈만큼 값 출력
+{
+	printf("%c\n", str2[i]); 
+	// 끊어서 (1글자씩 뽑아서) 출력. NULL 문자 공간이 하나 비어서 나타남.
+}
+
+char kor[] = "나도코딩";
+printf("%s\n", kor);
+printf("%d\n", sizeof(kor)); // size가 9인이유 - 영어 : 한 글자가 1byte (컴터 메모리 공간 크기), 한글 : 1글자가 2 byte, char 자료형의 크기 : 1byte (문자열의 끝을 나타내는거도 1byte)
+*/
+
+
+/*
+// 문자열 심화
+char c_array[7] = { 'c', 'o', 'd', 'i', 'n', 'g', '\0'}; //문자열 따로 빼고 NULL 문자 = 7개 크기. 만약 size가 6이고 끝 문자를 없애면 출력 결과가 이상해짐.
+printf("%s\n", c_array); //%s라 결과가 같나?
+
+char c_array2[10] = { 'c', 'o', 'd', 'i', 'n', 'g'}; // size를 여유롭게 둘 때
+printf("%s\n", c_array2); // 정상적인 표시
+for (int i = 0; i < sizeof(c_array2); i++) {
+	printf("%d\n", c_array2[i]); //coding 문자 자체는 이상없이 출력. null 문자 외에도 빈 문자로 값이 들어간다. - 글자 이외 남는 공간이 있으면 문자열 끝이 자동으로 들어간다.
+	// (%d일 떈 숫자로 나옴 - 각 문자열에 해당하는 숫자가 나옴) ASCII 코드 값 출력. (null 문자 0으로 출력됨) 
+}
+
+char name[256]; // 문자열 입력받기 : 경찰서 조서쓰기 예제
+printf("이름을 입력하세요. : ");
+scanf_s("%s", name, sizeof(name)); //sizeof(name) 역할 뭐더라
+printf("%s\n", name);
+*/
+
+
+// 아스키코드.
+
+
+// 프로젝트
+
+return 0;
+}
+
+// 정의
+void p(int num) {
+	// 중괄호 내용 채워서 여닫기
+	printf("num은 %d입니다.\n", num); // 4
+}
+
+void function_without_return() {
+	printf("반환값이 없는 함수 \n");
+}
+
+int function_with_return() {
+	printf("반환값이 있는 함수 \n");
+	return 10; // 함수를 호출하면 내의 문장을 수행하고 함수 내에서 10을 반환해준다.
+}
+
+void function_without_params() {
+	printf("전달값이 없는 함수 \n");
+}
+
+void function_with_params(int num1, int num2, int num3) {
+	printf("전달값이 있는 함수, %d %d %d \n", num1, num2, num3);
+	// 전달값은 순서대로
+}
+
+int apple(int total, int ate) {
+	printf("전달값과 반환값이 있는 함수\n");
+	return total - ate;
+}
