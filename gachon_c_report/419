@@ -1,0 +1,25 @@
+/*
+6.P 419 예제:포인터와 구조체 - 구현 및 결과 확인
+*/
+
+#include <stdio.h>
+
+struct student {
+    int number;
+    char name[200];
+    double gpa;
+};
+
+int main()
+{
+    struct student s = { 1, "gildong", 4.3 };
+    struct student* p;
+
+    p = &s;
+
+    printf("학번 = %d 이름 = %s, 학점 = %f\n", s.number, s.name, s.gpa);
+    printf("학번 = %d 이름 = %s, 학점 = %f\n", (*p).number, (*p).name, (*p).gpa);
+    printf("학번 = %d 이름 = %s, 학점 = %f\n", p->number, p->name, p->gpa);
+
+    return 0;
+}
